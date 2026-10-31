@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { ReactNode } from "react";
 import { siteConfig } from "@/config/site";
 import { Footer } from "@/components/Footer";
@@ -68,6 +69,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </main>
         <Footer />
         <Toaster />
+        {/* Vercel's own script, served from this domain; reports nothing until enabled in the dashboard. */}
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -42,6 +42,7 @@ that true.
 | Format    | Prettier + `prettier-plugin-tailwindcss`    | 3.9       |
 | Fonts     | Inter, JetBrains Mono, self-hosted          | —         |
 | Hosting   | Vercel (any static host works)              | —         |
+| Analytics | Vercel Speed Insights (`<SpeedInsights />`) | 2.0       |
 
 Node 22 (`.nvmrc`).
 
