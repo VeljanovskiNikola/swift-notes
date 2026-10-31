@@ -403,3 +403,4 @@ A change is ready when all of these are true:
 - Commit messages: short, plain, present tense. `Add Swift Testing post`, `Fix nav focus on mobile`.
 - Content-only PRs (`post/…`) touch only `content/`.
 - Keep PRs small and focused: one feature or fix each.
+- Never include Co-authored label in the commits
