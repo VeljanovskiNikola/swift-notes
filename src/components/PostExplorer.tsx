@@ -27,7 +27,7 @@ export function PostExplorer({ posts, tags }: PostExplorerProps) {
         {visible.length} {visible.length === 1 ? "post" : "posts"} shown
       </p>
       {visible.length > 0 ? (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
           {visible.map((post, index) => (
             <PostCard key={post.slug} post={post} index={index} />
           ))}

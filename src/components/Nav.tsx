@@ -38,7 +38,7 @@ export function Nav() {
         open ? "bg-background" : "glass",
       )}
     >
-      <div className="max-w-content mx-auto flex h-14 items-center justify-between px-4">
+      <div className="max-w-content mx-auto flex h-14 items-center justify-between px-4 sm:px-8 lg:px-12">
         <Link
           href="/"
           onClick={() => setOpen(false)}
