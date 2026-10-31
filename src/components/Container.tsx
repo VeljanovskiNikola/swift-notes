@@ -3,7 +3,7 @@ import { cn } from "@/lib/cn";
 
 interface ContainerProps {
   children: ReactNode;
-  /** "content" for grids (full width), "prose" for reading pages (56rem). */
+  /** "content" for grids (full width), "prose" for reading pages (also full width). */
   size?: "content" | "prose";
   className?: string;
 }
