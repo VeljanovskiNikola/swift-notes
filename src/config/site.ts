@@ -29,7 +29,7 @@ export const siteConfig = {
      * Leave empty to keep the form in demo mode (it shows a success
      * message but stores nothing). See src/lib/newsletter.ts.
      */
-    buttondownUsername: "",
+    buttondownUsername: "veljanovski",
   },
 } as const;
 
