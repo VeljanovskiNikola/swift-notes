@@ -13,7 +13,7 @@ export function Container({ children, size = "content", className }: ContainerPr
     <div
       className={cn(
         "mx-auto w-full px-4 sm:px-8 lg:px-12",
-        size === "prose" ? "max-w-prose" : "max-w-content",
+        size === "prose" ? "max-w-reading" : "max-w-content",
         className,
       )}
     >
