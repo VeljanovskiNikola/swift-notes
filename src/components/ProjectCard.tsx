@@ -1,31 +1,24 @@
-import { ExternalLink } from "lucide-react";
-import type { Project } from "@/data/projects";
-import { getTagStyle } from "@/lib/tagColors";
+import type { Project } from "@content/projects";
+import { Card } from "@/components/Card";
+import { Icon } from "@/components/Icon";
+import { TagList } from "@/components/TagPill";
 
-const ProjectCard = ({ project, index }: { project: Project; index: number }) => (
-  <div
-    className="bg-card rounded-xl p-5 card-hover gradient-border opacity-0 animate-fade-up"
-    style={{ animationDelay: `${index * 100}ms`, animationFillMode: "forwards" }}
-  >
-    <h3 className="text-lg font-semibold text-foreground mb-2">{project.name}</h3>
-    <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
-    <div className="flex flex-wrap gap-2 mb-4">
-      {project.tags.map((tag) => (
-        <span key={tag} className="text-xs font-medium px-2.5 py-0.5 rounded-full" style={getTagStyle(tag)}>
-          {tag}
-        </span>
-      ))}
-    </div>
-    <a
-      href={project.github}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 text-sm text-purple-400 hover:underline"
-    >
-      <ExternalLink size={14} />
-      View on GitHub
-    </a>
-  </div>
-);
-
-export default ProjectCard;
+export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
+  return (
+    <Card index={index} className="p-5">
+      <h2 className="text-foreground mb-2 text-lg font-semibold">{project.name}</h2>
+      <p className="text-muted mb-4 text-sm">{project.description}</p>
+      <TagList tags={project.tags} className="mb-4" />
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-primary-soft inline-flex items-center gap-1.5 text-sm hover:underline"
+      >
+        <Icon name="externalLink" size={14} />
+        {project.linkLabel ?? "View on GitHub"}
+        <span className="sr-only"> ({project.name}, opens in a new tab)</span>
+      </a>
+    </Card>
+  );
+}

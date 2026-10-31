@@ -1,32 +1,30 @@
-import { Link } from "react-router-dom";
-import { formatDate, type BlogPost } from "@/data/posts";
-import { getTagStyle } from "@/lib/tagColors";
+import type { PostSummary } from "@/lib/posts";
+import { Card } from "@/components/Card";
+import { PostMeta } from "@/components/PostMeta";
+import { TagList } from "@/components/TagPill";
 
-const PostCard = ({ post, index }: { post: BlogPost; index: number }) => (
-  <Link
-    to={`/post/${post.slug}`}
-    className="block bg-card rounded-xl p-5 card-hover gradient-border opacity-0 animate-fade-up"
-    style={{ animationDelay: `${index * 100}ms`, animationFillMode: "forwards" }}
-  >
-    <div className="flex flex-wrap gap-2 mb-3">
-      {post.tags.map((tag) => (
-        <span
-          key={tag}
-          className="text-xs font-medium px-2.5 py-0.5 rounded-full"
-          style={getTagStyle(tag)}
+export function PostCard({ post, index = 0 }: { post: PostSummary; index?: number }) {
+  return (
+    <Card
+      href={`/post/${post.slug}`}
+      index={index}
+      className="p-5"
+      labelledBy={`post-${post.slug}-title`}
+    >
+      <div>
+        <TagList tags={post.tags} className="mb-3" />
+        <h2
+          id={`post-${post.slug}-title`}
+          className="text-foreground mb-1 text-lg leading-snug font-semibold"
         >
-          {tag}
-        </span>
-      ))}
-    </div>
-    <h2 className="text-lg font-semibold text-foreground mb-1 leading-snug">{post.title}</h2>
-    <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{post.excerpt}</p>
-    <div className="flex items-center gap-3 text-xs text-muted-foreground">
-      <span>{formatDate(post.date)}</span>
-      <span>·</span>
-      <span>{post.readingTime}</span>
-    </div>
-  </Link>
-);
-
-export default PostCard;
+          {post.title}
+        </h2>
+        <p className="text-muted mb-3 line-clamp-2 text-sm">{post.excerpt}</p>
+        <PostMeta date={post.date} readTime={post.readTime} className="text-xs" />
+        {post.draft && (
+          <p className="text-orange mt-2 text-xs font-medium">Draft — hidden in production</p>
+        )}
+      </div>
+    </Card>
+  );
+}
