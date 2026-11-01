@@ -80,3 +80,25 @@ test("unknown pages show the 404 page", async ({ page }) => {
   expect(response?.status()).toBe(404);
   await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
 });
+
+test("mobile menu closes with Escape and after choosing a page", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "mobile", "The menu button only exists on small screens");
+  await page.goto("/");
+  const toggle = page.getByRole("button", { name: /menu/i });
+  const aboutLink = page
+    .getByRole("navigation", { name: "Main" })
+    .getByRole("link", { name: "About" });
+
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  await expect(aboutLink).toBeVisible();
+
+  await page.keyboard.press("Escape");
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await expect(aboutLink).toBeHidden();
+
+  await toggle.click();
+  await aboutLink.click();
+  await expect(page).toHaveURL(/\/about$/);
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+});
