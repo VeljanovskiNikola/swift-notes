@@ -4,7 +4,6 @@ import type { IconName } from "@/components/Icon";
 export const about = {
   intro: [
     "I'm an iOS developer passionate about building thoughtful, performant software. I write about Swift, SwiftUI, app architecture, and the creative side of programming.",
-    "By day I work on consumer-facing iOS apps. By night I tinker with synthesizers, read about type theory, and occasionally ship open-source Swift packages.",
   ],
   topicsTitle: "What I write about",
   topics: [

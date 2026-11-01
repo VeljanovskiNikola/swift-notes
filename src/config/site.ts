@@ -13,6 +13,11 @@ export const siteConfig = {
     name: "Nikola Veljanovski",
     initials: "SN",
   },
+  /**
+   * true = every URL shows only the "Coming soon" screen (no nav, footer or content, and
+   * search engines are told not to index it). Set to false to launch the real site.
+   */
+  comingSoon: true,
   nav: [
     { label: "Blog", href: "/" },
     { label: "About", href: "/about" },

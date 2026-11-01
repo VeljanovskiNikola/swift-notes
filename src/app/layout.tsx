@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { ReactNode } from "react";
 import { siteConfig } from "@/config/site";
+import { ComingSoon } from "@/components/ComingSoon";
 import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
 import { Toaster } from "@/components/Toaster";
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: { card: "summary_large_image" },
-  robots: { index: true, follow: true },
+  robots: siteConfig.comingSoon ? { index: false, follow: false } : { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
@@ -55,6 +56,17 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  if (siteConfig.comingSoon) {
+    // Pages still build, but their content is never rendered while the site is not launched.
+    return (
+      <html lang="en" className={`${inter.variable} ${jetbrains.variable}`}>
+        <body className="min-h-screen">
+          <ComingSoon />
+          <SpeedInsights />
+        </body>
+      </html>
+    );
+  }
   return (
     <html lang="en" className={`${inter.variable} ${jetbrains.variable}`}>
       <body className="flex min-h-screen flex-col">

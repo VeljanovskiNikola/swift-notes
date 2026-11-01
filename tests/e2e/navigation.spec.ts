@@ -1,4 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
+import { siteConfig } from "../../src/config/site";
+
+test.skip(siteConfig.comingSoon, "The site is in coming soon mode; see coming-soon.spec.ts");
 
 /** On small screens the nav links live behind the menu button. */
 async function clickNav(page: Page, label: string) {
