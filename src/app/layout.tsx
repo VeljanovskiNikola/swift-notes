@@ -8,19 +8,20 @@ import { Nav } from "@/components/Nav";
 import { Toaster } from "@/components/Toaster";
 import "./globals.css";
 
-// Self-hosted variable fonts: no request to Google, no layout shift.
+// Self-hosted variable fonts: no request to Google, no layout shift. "optional" means a late font
+// is never swapped in mid-load (no flash); it is cached for the next page.
 const inter = localFont({
   src: "../../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2",
   variable: "--font-inter",
   weight: "100 900",
-  display: "swap",
+  display: "optional",
 });
 
 const jetbrains = localFont({
   src: "../../node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2",
   variable: "--font-jetbrains",
   weight: "100 800",
-  display: "swap",
+  display: "optional",
 });
 
 export const metadata: Metadata = {
